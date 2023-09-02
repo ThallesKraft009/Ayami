@@ -1,0 +1,13 @@
+{
+ [
+  {
+  "name": "Weather.Changed",
+  "description": "Mudança de clima",
+  "param": "Nenhum"
+},{
+  "name": "Backpack.ItemTakeOut",
+  "description": "Um Item é jogado no chão",
+  "param": "{blockid, x, y, z, itemid, itemnum}"
+ }
+]
+}
