@@ -1,4 +1,4 @@
-DISPLAY_NAME=Kaede Bot
-MAIN=index.js
-MEMORY=128
+DISPLAY_NAME=Ayami Bot
+MAIN=shard.js
+MEMORY=500
 VERSION=recommended
