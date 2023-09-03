@@ -8,7 +8,7 @@ import { logStatus } from "./functions.js";
  */
 export default async (client) => {
   // code
-  try {
+  //try {
     const commandsDir = await readdir(`./Commands/Message`);
     const items = await Promise.all(
       commandsDir.map(async (dir) => {
@@ -31,7 +31,7 @@ export default async (client) => {
       })
     );
     await Promise.all(items);
-  } catch (error) {
-    console.log(error);
-  }
-};
+  } //catch (error) {
+  //  console.log(error);
+//  }
+//};
