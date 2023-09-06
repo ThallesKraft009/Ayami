@@ -32,7 +32,7 @@ export default {
     data.player = {};
     data.player.x = 0;
     data.player.y = 0;
-    data.vida = 100;
+    data.vida = userdb.rpg.vida;
     data.fome = 100;
     data.blocks = {};
     data.blocks.pedras = 0;
@@ -321,7 +321,9 @@ const indiceZumbi = data.monstros.findIndex(zumbi => zumbi.x === mob.x && zumbi.
       iconURL: `${message.author.displayAvatarURL()}`
     })
 
-            int.update({
+            await int.deferUpdate()
+            
+            int.editReply({
               embeds: [embed],
               content: `${message.author}`,
               components: [botoes]
@@ -687,6 +689,18 @@ if (tipoMinerio === "carvão"){
           picareta = picareta[0];
 
           picareta = picareta - 5;
+
+          if (data.minerio_selecionado === "carvão"){
+              data.minerios.carvao = data.minerios.carvao+1;
+
+          }
+
+          if (data.minerio_selecionado === "cobre"){
+
+              data.minerios.cobre = data.minerios.cobre+1;
+
+            
+          }
 
           
         }

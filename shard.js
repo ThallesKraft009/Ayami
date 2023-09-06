@@ -1,15 +1,13 @@
-import {ShardingManager} from 'discord.js';
+import { ClusterManager } from 'discord-hybrid-sharding'
 import c from 'colors';
 
-const manager = new ShardingManager('./index.js', {
-  token: process.env.token, 
-  totalShards: 1
+const manager = new ClusterManager(`index.js`, {
+    totalShards: 15,
+    shardsPerClusters: 5,
+    totalClusters: 3,
+    mode: 'process',
+    token: process.env.token,
 });
 
-manager.on('shardCreate', async(shard) => {
-  console.log(c.blue(`Shard "${shard.id}" was started.`))
-});
-
-export default manager;
-
-manager.spawn();
+manager.on('clusterCreate', cluster => console.log(c.blue(`Launched Cluster ${cluster.id}`)));
+manager.spawn({ timeout: -1 });

@@ -56,6 +56,7 @@ const userset = new Schema({
 
   rpg: {
     mundo: { type: String, default: null },
+    vida: { type: Number, default: 100 },
 
     blocos: {
       madeira: { type: Number, default: 0 },

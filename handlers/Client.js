@@ -6,6 +6,8 @@ import {
   EmbedBuilder,
 } from "discord.js";
 import settings from "../settings/config.js";
+import { ClusterClient, getInfo } from 'discord-hybrid-sharding'
+
 
 export class Bot extends Client {
   constructor() {
@@ -23,7 +25,8 @@ export class Bot extends Client {
         GatewayIntentBits.MessageContent,
         GatewayIntentBits.GuildMembers,
       ],
-      shards: "auto",
+    shards: getInfo().SHARD_LIST,
+    shardCount: getInfo().TOTAL_SHARDS,
       failIfNotExists: false,
       allowedMentions: {
         parse: ["everyone", "roles", "users"],
@@ -33,7 +36,7 @@ export class Bot extends Client {
       },
     });
 
-    // global variables
+    this.cluster = new ClusterClient(this);
     this.config = settings;
     this.scommands = new Collection();
     this.mcommands = new Collection();

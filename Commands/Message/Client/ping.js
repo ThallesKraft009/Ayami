@@ -17,13 +17,14 @@ export default {
     
     let apiPing = Date.now() - message.createdTimestamp;
 
+    let shard = message.guild.shardId;
     
 
     return message.reply({
       content: "Ping?"
     }).then(async(x) => {
       x.edit({
-        content: `🏓 Pong!\n⏰ | Gateway Ping: **\`${gatewayPing}ms\`**\n⚡ | API Ping: **\`${apiPing}ms\`**`
+        content: `🏓 Pong! (Shard: ${shard}/15)(Cluster: ${client.cluster.id}/3)\n⏰ | Gateway Ping: **\`${gatewayPing}ms\`**\n⚡ | API Ping: **\`${apiPing}ms\`**`
       })
     })
   },
